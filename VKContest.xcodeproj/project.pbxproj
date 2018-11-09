@@ -10,6 +10,8 @@
 		55961EC82195CE0A00784F09 /* NewsTextViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */; };
 		55B47CE52195E884005A42D5 /* UIColor+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CE42195E884005A42D5 /* UIColor+Styles.swift */; };
 		55B47CE72195F10C005A42D5 /* CGSize+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CE62195F10C005A42D5 /* CGSize+Helpers.swift */; };
+		55B47CF12195FCE2005A42D5 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */; };
+		55B47CF32195FE7A005A42D5 /* UIFont+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CF22195FE7A005A42D5 /* UIFont+Styles.swift */; };
 		55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */; };
 		55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */; };
 		55B9E3C32194DCAB009E89EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E3C22194DCAB009E89EF /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextViewLayout.swift; sourceTree = "<group>"; };
 		55B47CE42195E884005A42D5 /* UIColor+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Styles.swift"; sourceTree = "<group>"; };
 		55B47CE62195F10C005A42D5 /* CGSize+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Helpers.swift"; sourceTree = "<group>"; };
+		55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		55B47CF22195FE7A005A42D5 /* UIFont+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Styles.swift"; sourceTree = "<group>"; };
 		55B9E3B82194DCA9009E89EF /* VKContest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKContest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
 				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
 				55B47CE62195F10C005A42D5 /* CGSize+Helpers.swift */,
+				55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */,
 				55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */,
 				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				55B47CE42195E884005A42D5 /* UIColor+Styles.swift */,
+				55B47CF22195FE7A005A42D5 /* UIFont+Styles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				55B9E40B2195AFC2009E89EF /* NewsHeaderViewLayout.swift in Sources */,
 				55B9E4192195C9B2009E89EF /* NewsCellLayout.swift in Sources */,
 				55B9E40221959CC4009E89EF /* NewsBarView.swift in Sources */,
+				55B47CF32195FE7A005A42D5 /* UIFont+Styles.swift in Sources */,
 				55B9E3FB21958A38009E89EF /* UIViewController+Helpers.swift in Sources */,
 				55B9E3F52195887F009E89EF /* MainViewController.swift in Sources */,
 				55B47CE52195E884005A42D5 /* UIColor+Styles.swift in Sources */,
@@ -291,6 +298,7 @@
 				55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */,
 				55B9E4112195BDB3009E89EF /* UIImage+Helpers.swift in Sources */,
 				55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */,
+				55B47CF12195FCE2005A42D5 /* UIColor+Helpers.swift in Sources */,
 				55B47CE72195F10C005A42D5 /* CGSize+Helpers.swift in Sources */,
 				55961EC82195CE0A00784F09 /* NewsTextViewLayout.swift in Sources */,
 				55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */,

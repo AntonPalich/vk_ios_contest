@@ -81,6 +81,8 @@ class NewsHeaderView: UIView {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .headerNameColor
+        label.font = .headerNameFont
         return label
     }()
 
@@ -92,6 +94,8 @@ class NewsHeaderView: UIView {
 
     private let dateLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .headerDateColor
+        label.font = .headerDateFont
         return label
     }()
 

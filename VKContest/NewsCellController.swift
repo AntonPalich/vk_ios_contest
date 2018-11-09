@@ -27,8 +27,8 @@ class NewsCellController {
         cell.viewModel = NewsCell.ViewModel(
             headerViewModel: NewsHeaderView.ViewModel(
                 avatarImage: NewsCellController.placeholderImage,
-                name: "Test Name",
-                date: "Test Date"
+                name: "Андрей Рогозов",
+                date: "9 апр в 16:36"
             ),
             barViewModel: NewsBarView.ViewModel(
                 likes: "1",
