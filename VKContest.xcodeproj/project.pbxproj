@@ -13,6 +13,8 @@
 		55B9E3C62194DCAB009E89EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */; };
 		55B9E3D12194DCAC009E89EF /* VKContestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3D02194DCAC009E89EF /* VKContestTests.swift */; };
 		55B9E3E62194E914009E89EF /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B9E3E52194E914009E89EF /* VKSdkFramework.framework */; };
+		55B9E3F52195887F009E89EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3F42195887F009E89EF /* MainViewController.swift */; };
+		55B9E3FB21958A38009E89EF /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		55B9E3D02194DCAC009E89EF /* VKContestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKContestTests.swift; sourceTree = "<group>"; };
 		55B9E3D22194DCAC009E89EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B9E3E52194E914009E89EF /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Frameworks/Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
+		55B9E3F42195887F009E89EF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */,
+				55B9E3F42195887F009E89EF /* MainViewController.swift */,
 				55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */,
+				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
 				55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */,
 				55B9E3C72194DCAB009E89EF /* Info.plist */,
@@ -221,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B9E3FB21958A38009E89EF /* UIViewController+Helpers.swift in Sources */,
+				55B9E3F52195887F009E89EF /* MainViewController.swift in Sources */,
 				55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */,
 				55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */,
 			);
