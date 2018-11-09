@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55961EC82195CE0A00784F09 /* NewsTextViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */; };
 		55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */; };
 		55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */; };
 		55B9E3C32194DCAB009E89EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E3C22194DCAB009E89EF /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextViewLayout.swift; sourceTree = "<group>"; };
 		55B9E3B82194DCA9009E89EF /* VKContest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKContest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				55B9E4162195C29A009E89EF /* NewsCellController.swift */,
 				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
 				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
+				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
 				55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */,
 				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
@@ -273,6 +276,7 @@
 				55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */,
 				55B9E4112195BDB3009E89EF /* UIImage+Helpers.swift in Sources */,
 				55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */,
+				55961EC82195CE0A00784F09 /* NewsTextViewLayout.swift in Sources */,
 				55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */,
 				55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */,
 			);

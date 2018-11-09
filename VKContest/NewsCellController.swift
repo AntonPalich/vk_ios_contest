@@ -13,9 +13,13 @@ class NewsCellController {
     static let placeholderImage = UIImage(color: UIColor.lightGray, size: CGSize(width: 36, height: 36))
 
     private var cellLayout = NewsCellLayout()
+    private let text = "Одной из ключевых ценностей Вконтакте является то, что здесь сосредоточено огромное количество уникального контента. Сотни тысяч авторов и пабликов ежедневно создают миллионы материалов, которые невозможно найти нигде, кроме Вконтакте"
 
     func heightForCell(in tableView: UITableView) -> CGFloat {
-        self.cellLayout.calculateLayoutFitting(CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude))
+        self.cellLayout.calculateLayoutFitting(
+            CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude),
+            forText: self.text
+        )
         return self.cellLayout.size.height
     }
 
@@ -34,7 +38,8 @@ class NewsCellController {
                 onLikesTapped: nil,
                 onCommentsTapped: nil,
                 onSharesTapped: nil
-            )
+            ),
+            text: self.text
         )
         cell.layout = self.cellLayout
     }
