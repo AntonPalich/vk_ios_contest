@@ -28,6 +28,7 @@ class NewsFeedViewController: UITableViewController {
 
         self.tableView.keyboardDismissMode = .onDrag
         self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = .newsBackgroundColor
         self.tableView.register(NewsCell.self, forCellReuseIdentifier: "reuseId")
         self.tableView.delegate = self
     }

@@ -1,16 +1,58 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "stretch",
+          "width" : 10,
+          "height" : 10
+        },
+        "cap-insets" : {
+          "bottom" : 27,
+          "top" : 9,
+          "right" : 27,
+          "left" : 27
+        }
+      },
       "idiom" : "universal",
       "filename" : "CardWithShadow.png",
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "stretch",
+          "width" : 20,
+          "height" : 20
+        },
+        "cap-insets" : {
+          "bottom" : 54,
+          "top" : 18,
+          "right" : 54,
+          "left" : 54
+        }
+      },
       "idiom" : "universal",
       "filename" : "CardWithShadow@2x.png",
       "scale" : "2x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "stretch",
+          "width" : 30,
+          "height" : 30
+        },
+        "cap-insets" : {
+          "bottom" : 81,
+          "top" : 27,
+          "right" : 81,
+          "left" : 81
+        }
+      },
       "idiom" : "universal",
       "filename" : "CardWithShadow@3x.png",
       "scale" : "3x"
@@ -19,5 +61,8 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
