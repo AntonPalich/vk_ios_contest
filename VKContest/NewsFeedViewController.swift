@@ -27,6 +27,7 @@ class NewsFeedViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.keyboardDismissMode = .onDrag
+        self.tableView.separatorStyle = .none
         self.tableView.register(NewsCell.self, forCellReuseIdentifier: "reuseId")
         self.tableView.delegate = self
     }

@@ -29,12 +29,19 @@ class NewsCell: UITableViewCell {
         textView.textContainerInset = .zero
         return textView
     }()
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        return imageView
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.addSubview(self.backgroundImageView)
         self.contentView.addSubview(self.headerView)
         self.contentView.addSubview(self.barView)
         self.contentView.addSubview(self.textView)
+        self.contentView.backgroundColor = .lightGray
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -69,6 +76,7 @@ class NewsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.backgroundImageView.frame = self.layout.backgroundImageViewFrame
         self.headerView.frame = self.layout.headerViewFrame
         self.textView.frame = self.layout.textViewFrame
         self.barView.frame = self.layout.barViewFrame
