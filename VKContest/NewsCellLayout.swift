@@ -21,7 +21,7 @@ struct NewsCellLayout {
 
     private let backgroundImageViewInsets = UIEdgeInsets(top: 0, left: -10, bottom: -10, right: -10)
     private let headerInsets = UIEdgeInsets(top: 12, left: 20, bottom: 0, right: 20)
-    private let textInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    private let textInsets = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
     private let barInsets = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 8)
 
     mutating func calculateLayoutFitting(_ size: CGSize, forText text: String) {
@@ -37,6 +37,7 @@ struct NewsCellLayout {
         let height = (
             self.headerInsets.top
             + self.headerViewLayout.size.height
+            + self.textInsets.top
             + self.textViewLayout.size.height
             + self.barViewLayout.size.height
             + self.barInsets.bottom
@@ -54,7 +55,7 @@ struct NewsCellLayout {
         self.textViewFrame = CGRect(
             origin: CGPoint(
                 x: self.textInsets.left,
-                y: self.headerViewFrame.maxY
+                y: self.headerViewFrame.maxY + self.textInsets.top
             ),
             size: self.textViewLayout.size
         )

@@ -11,4 +11,5 @@ import UIKit
 extension UIFont {
     static let headerNameFont = UIFont.boldSystemFont(ofSize: 14)
     static let headerDateFont = UIFont.systemFont(ofSize: 12)
+    static let newsTextFont = UIFont.systemFont(ofSize: 15)
 }

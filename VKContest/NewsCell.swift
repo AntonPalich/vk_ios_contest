@@ -25,7 +25,6 @@ class NewsCell: UITableViewCell {
         textView.showsVerticalScrollIndicator = false
         textView.isExclusiveTouch = true
         textView.textContainer.lineFragmentPadding = 0
-        textView.font = UIFont.systemFont(ofSize: 14)
         textView.textContainerInset = .zero
         return textView
     }()
@@ -63,7 +62,18 @@ class NewsCell: UITableViewCell {
         didSet {
             self.headerView.viewModel = self.viewModel?.headerViewModel
             self.barView.viewModel = self.viewModel?.barViewModel
-            self.textView.text = self.viewModel?.text
+            self.textView.attributedText = NSAttributedString(
+                string: self.viewModel?.text ?? "",
+                attributes: [
+                    .font: UIFont.newsTextFont,
+                    .foregroundColor: UIColor.newsTextColor,
+                    .paragraphStyle: {
+                        let paragraphStyle = NSMutableParagraphStyle()
+                        paragraphStyle.lineSpacing = 4
+                        return paragraphStyle
+                    }()
+                ]
+            )
         }
     }
 

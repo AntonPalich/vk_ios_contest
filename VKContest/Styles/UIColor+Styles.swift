@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     static let newsBackgroundColor = UIColor(hex: 0xF2F2F2)
+    static let newsTextColor = UIColor(hex: 0x2E2C30)
     static let headerNameColor = UIColor(hex: 0x2C2D2E)
     static let headerDateColor = UIColor(hex: 0x818C99)
 }

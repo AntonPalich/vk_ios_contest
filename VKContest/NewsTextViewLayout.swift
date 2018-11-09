@@ -18,7 +18,17 @@ struct NewsTextViewLayout {
             return container
         }()
 
-        let textStorage = NSTextStorage(string: text, attributes: [.font: UIFont.systemFont(ofSize: 14)])
+        // FIXME: Pass attributed string for layout calculation
+        let textStorage = NSTextStorage(
+            string: text,
+            attributes: [
+                .font: UIFont.newsTextFont,
+                .paragraphStyle: {
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    return paragraphStyle
+                }()
+            ])
 
         let layoutManager: NSLayoutManager = {
             let layoutManager = NSLayoutManager()
@@ -27,6 +37,9 @@ struct NewsTextViewLayout {
             return layoutManager
         }()
 
-        self.size = CGSize(width: size.width, height: layoutManager.usedRect(for: textContainer).size.height)
+        self.size = CGSize(
+            width: size.width,
+            height: ceil(layoutManager.usedRect(for: textContainer).size.height)
+        )
     }
 }
