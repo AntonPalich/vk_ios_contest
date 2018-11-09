@@ -78,11 +78,10 @@ class NewsBarView: UIView {
     // MARK: Likes
 
     private let likesButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.addTarget(self, action: #selector(onLikesTapped), for: .touchUpInside)
-        button.setImage(UIImage(named: "Like_outline_24"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
+        return UIButton.makeBarButton(
+            image: UIImage(named: "Like_outline_24"),
+            selector:  #selector(onLikesTapped)
+        )
     }()
 
     private func set(likes: String) {
@@ -97,11 +96,10 @@ class NewsBarView: UIView {
     // MARK: Comments
 
     private let commentsButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.addTarget(self, action: #selector(onCommentsTapped), for: .touchUpInside)
-        button.setImage(UIImage(named: "Comment_outline_24"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
+        return UIButton.makeBarButton(
+            image: UIImage(named: "Comment_outline_24"),
+            selector: #selector(onCommentsTapped)
+        )
     }()
 
     private func set(comments: String) {
@@ -116,11 +114,10 @@ class NewsBarView: UIView {
     // MARK: Shares
 
     private let sharesButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.addTarget(self, action: #selector(onSharesTapped), for: .touchUpInside)
-        button.setImage(UIImage(named: "Share_outline_24"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
+        return UIButton.makeBarButton(
+            image: UIImage(named: "Share_outline_24"),
+            selector: #selector(onSharesTapped)
+        )
     }()
 
     private func set(shares: String) {
@@ -135,13 +132,54 @@ class NewsBarView: UIView {
     // MARK: Views
 
     private let viewsButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "View_20"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
+        return UIButton.makeBarButton(
+            image: UIImage(named: "View_20"),
+            selector: nil,
+            color: .newsBarViewsButtonColor
+        )
     }()
 
     private func set(views: String) {
         self.viewsButton.setTitle(views, for: .normal)
+    }
+}
+
+extension UIButton {
+    static fileprivate func makeBarButton(image: UIImage?,
+                                          selector: Selector?,
+                                          font: UIFont = .newsBarButtonFont,
+                                          color: UIColor = .newsBarButtonColor) -> UIButton {
+        let button = NewsBarButton(type: .custom)
+        button.setImage(image, for: .normal)
+        button.titleLabel?.font = font
+        button.setTitleColor(color, for: .normal)
+        button.tintColor = color
+        if let selector = selector {
+            button.addTarget(self, action: selector, for: .touchUpInside)
+        }
+        return button
+    }
+}
+
+// FIXME: Do alignment according to design
+private class NewsBarButton: UIButton {
+    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
+        let imageRect = super.imageRect(forContentRect: contentRect)
+        return CGRect(
+            x: contentRect.midX - imageRect.width - 2,
+            y: contentRect.midY - imageRect.height / 2,
+            width: imageRect.width,
+            height: imageRect.height
+        )
+    }
+
+    override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
+        let titleRect = super.titleRect(forContentRect: contentRect)
+        return CGRect(
+            x: contentRect.midX + 2,
+            y: contentRect.midY - titleRect.height / 2,
+            width: titleRect.width,
+            height: titleRect.height
+        )
     }
 }

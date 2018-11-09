@@ -13,4 +13,6 @@ extension UIColor {
     static let newsTextColor = UIColor(hex: 0x2E2C30)
     static let headerNameColor = UIColor(hex: 0x2C2D2E)
     static let headerDateColor = UIColor(hex: 0x818C99)
+    static let newsBarButtonColor = UIColor(hex: 0x818C99)
+    static let newsBarViewsButtonColor = UIColor(hex: 0xA8ADB2)
 }
