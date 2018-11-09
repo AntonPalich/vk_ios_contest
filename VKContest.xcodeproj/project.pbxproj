@@ -21,6 +21,7 @@
 		55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */; };
 		55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E4082195AB46009E89EF /* NewsHeaderView.swift */; };
 		55B9E40B2195AFC2009E89EF /* NewsHeaderViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */; };
+		55B9E4112195BDB3009E89EF /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBarViewLayout.swift; sourceTree = "<group>"; };
 		55B9E4082195AB46009E89EF /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderViewLayout.swift; sourceTree = "<group>"; };
+		55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */,
 				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
 				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
+				55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */,
 				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
 				55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */,
@@ -259,6 +262,7 @@
 				55B9E3F52195887F009E89EF /* MainViewController.swift in Sources */,
 				55B9E3FD219596BE009E89EF /* NewsTableViewCell.swift in Sources */,
 				55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */,
+				55B9E4112195BDB3009E89EF /* UIImage+Helpers.swift in Sources */,
 				55B9E3FF21959707009E89EF /* NewsView.swift in Sources */,
 				55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */,
 				55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */,

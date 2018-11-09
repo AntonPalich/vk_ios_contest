@@ -10,6 +10,8 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
+    static let placeholderImage = UIImage(color: UIColor.lightGray, size: CGSize(width: 36, height: 36))
+
     private let headerView = NewsHeaderView()
     private let barView = NewsBarView()
 
@@ -19,7 +21,7 @@ class NewsTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.barView)
 
         self.headerView.viewModel = NewsHeaderView.ViewModel(
-            avatarImage: nil,
+            avatarImage: NewsTableViewCell.placeholderImage,
             name: "Test Name",
             date: "Test Date"
         )
