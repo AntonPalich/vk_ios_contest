@@ -60,6 +60,8 @@ class NewsHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.avatarImageView.frame = self.layout.avatarImageViewFrame
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width / 2
+        self.avatarImageView.layer.masksToBounds = true
         self.nameLabel.frame = self.layout.nameLabelFrame
         self.dateLabel.frame = self.layout.dateLabelFrame
     }
