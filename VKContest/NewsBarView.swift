@@ -80,6 +80,7 @@ class NewsBarView: UIView {
     private let likesButton: UIButton = {
         return UIButton.makeBarButton(
             image: UIImage(named: "Like_outline_24"),
+            target: self,
             selector:  #selector(onLikesTapped)
         )
     }()
@@ -98,6 +99,7 @@ class NewsBarView: UIView {
     private let commentsButton: UIButton = {
         return UIButton.makeBarButton(
             image: UIImage(named: "Comment_outline_24"),
+            target: self,
             selector: #selector(onCommentsTapped)
         )
     }()
@@ -116,6 +118,7 @@ class NewsBarView: UIView {
     private let sharesButton: UIButton = {
         return UIButton.makeBarButton(
             image: UIImage(named: "Share_outline_24"),
+            target: self,
             selector: #selector(onSharesTapped)
         )
     }()
@@ -134,6 +137,7 @@ class NewsBarView: UIView {
     private let viewsButton: UIButton = {
         return UIButton.makeBarButton(
             image: UIImage(named: "View_20"),
+            target: nil,
             selector: nil,
             color: .newsBarViewsButtonColor
         )
@@ -146,6 +150,7 @@ class NewsBarView: UIView {
 
 extension UIButton {
     static fileprivate func makeBarButton(image: UIImage?,
+                                          target: Any?,
                                           selector: Selector?,
                                           font: UIFont = .newsBarButtonFont,
                                           color: UIColor = .newsBarButtonColor) -> UIButton {
@@ -155,7 +160,7 @@ extension UIButton {
         button.setTitleColor(color, for: .normal)
         button.tintColor = color
         if let selector = selector {
-            button.addTarget(self, action: selector, for: .touchUpInside)
+            button.addTarget(target, action: selector, for: .touchUpInside)
         }
         return button
     }
