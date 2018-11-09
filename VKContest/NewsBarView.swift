@@ -61,11 +61,14 @@ class NewsBarView: UIView {
 
     // MARK: Layout
 
-    private var layout = NewsBarViewLayout()
+    var layout = NewsBarViewLayout() {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layout.calculateLayoutFitting(self.bounds.size)
         self.likesButton.frame = self.layout.likesButtonFrame
         self.commentsButton.frame = self.layout.commentsButtonFrame
         self.sharesButton.frame = self.layout.sharesButtonFrame

@@ -51,11 +51,14 @@ class NewsHeaderView: UIView {
 
     // MARK: Layout
 
-    private var layout = NewsHeaderViewLayout()
+    var layout = NewsHeaderViewLayout() {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layout.calculateLayoutFitting(self.bounds.size)
         self.avatarImageView.frame = self.layout.avatarImageViewFrame
         self.nameLabel.frame = self.layout.nameLabelFrame
         self.dateLabel.frame = self.layout.dateLabelFrame
