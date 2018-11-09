@@ -91,6 +91,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55B47CFE21961F23005A42D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				55B47CE62195F10C005A42D5 /* CGSize+Helpers.swift */,
+				55B47CF821961062005A42D5 /* UIButton+Helpers.swift */,
+				55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */,
+				55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */,
+				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		55B9E3AF2194DCA9009E89EF = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +125,7 @@
 		55B9E3BA2194DCA9009E89EF /* VKContest */ = {
 			isa = PBXGroup;
 			children = (
+				55B47CFE21961F23005A42D5 /* Helpers */,
 				55B9E40321959DF5009E89EF /* Resources */,
 				55B9E40021959757009E89EF /* Styles */,
 				55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */,
@@ -126,11 +139,6 @@
 				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
 				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
 				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
-				55B47CE62195F10C005A42D5 /* CGSize+Helpers.swift */,
-				55B47CF821961062005A42D5 /* UIButton+Helpers.swift */,
-				55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */,
-				55B9E4102195BDB3009E89EF /* UIImage+Helpers.swift */,
-				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
 				55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */,
 				55B9E3C72194DCAB009E89EF /* Info.plist */,
