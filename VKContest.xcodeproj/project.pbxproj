@@ -15,6 +15,7 @@
 		55B9E3E62194E914009E89EF /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B9E3E52194E914009E89EF /* VKSdkFramework.framework */; };
 		55B9E3F52195887F009E89EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3F42195887F009E89EF /* MainViewController.swift */; };
 		55B9E3FB21958A38009E89EF /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */; };
+		55B9E40521959E0A009E89EF /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E40421959E0A009E89EF /* Resources.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		55B9E3E52194E914009E89EF /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Frameworks/Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		55B9E3F42195887F009E89EF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
+		55B9E40421959E0A009E89EF /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		55B9E3BA2194DCA9009E89EF /* VKContest */ = {
 			isa = PBXGroup;
 			children = (
+				55B9E40321959DF5009E89EF /* Resources */,
 				55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */,
 				55B9E3F42195887F009E89EF /* MainViewController.swift */,
 				55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */,
@@ -101,6 +104,14 @@
 				55B9E3D22194DCAC009E89EF /* Info.plist */,
 			);
 			path = VKContestTests;
+			sourceTree = "<group>";
+		};
+		55B9E40321959DF5009E89EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55B9E40421959E0A009E89EF /* Resources.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B9E40521959E0A009E89EF /* Resources.xcassets in Resources */,
 				55B9E3C62194DCAB009E89EF /* LaunchScreen.storyboard in Resources */,
 				55B9E3C32194DCAB009E89EF /* Assets.xcassets in Resources */,
 			);
