@@ -17,9 +17,9 @@ struct NewsBarViewLayout {
     private(set) var size: CGSize = .zero
 
     mutating func calculateLayoutFitting(_ size: CGSize) {
-        self.size = CGSize(width: size.width, height: NewsBarViewLayout.buttonSize.height)
-
         let buttonSize = NewsBarViewLayout.buttonSize
+        self.size = CGSize(width: size.width, height: buttonSize.height)
+
         self.likesButtonFrame = CGRect(origin: .zero, size: buttonSize)
 
         let commentsButtonOrigin = CGPoint(x: self.likesButtonFrame.maxX, y: 0)

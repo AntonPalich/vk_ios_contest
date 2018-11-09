@@ -10,11 +10,29 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
+    private let headerView = NewsHeaderView()
     private let barView = NewsBarView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.addSubview(self.headerView)
         self.contentView.addSubview(self.barView)
+
+        self.headerView.viewModel = NewsHeaderView.ViewModel(
+            avatarImage: nil,
+            name: "Test Name",
+            date: "Test Date"
+        )
+
+        self.barView.viewModel = NewsBarView.ViewModel(
+            likes: "1",
+            comments: "10",
+            shares: "100",
+            views: "1k",
+            onLikesTapped: nil,
+            onCommentsTapped: nil,
+            onSharesTapped: nil
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -23,6 +41,12 @@ class NewsTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.barView.frame = self.contentView.bounds
+        var headerViewLayout = NewsHeaderViewLayout()
+        headerViewLayout.calculateLayoutFitting(self.contentView.bounds.size)
+        self.headerView.frame = CGRect(origin: .zero, size: headerViewLayout.size)
+
+        var barViewLayout = NewsBarViewLayout()
+        barViewLayout.calculateLayoutFitting(self.contentView.bounds.size)
+        self.barView.frame = CGRect(origin: CGPoint(x: 0, y: self.headerView.frame.maxY), size: barViewLayout.size)
     }
 }

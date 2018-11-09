@@ -19,6 +19,8 @@
 		55B9E40221959CC4009E89EF /* NewsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E40121959CC4009E89EF /* NewsBarView.swift */; };
 		55B9E40521959E0A009E89EF /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E40421959E0A009E89EF /* Resources.xcassets */; };
 		55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */; };
+		55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E4082195AB46009E89EF /* NewsHeaderView.swift */; };
+		55B9E40B2195AFC2009E89EF /* NewsHeaderViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		55B9E40121959CC4009E89EF /* NewsBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBarView.swift; sourceTree = "<group>"; };
 		55B9E40421959E0A009E89EF /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
 		55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBarViewLayout.swift; sourceTree = "<group>"; };
+		55B9E4082195AB46009E89EF /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
+		55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				55B9E3FC219596BE009E89EF /* NewsTableViewCell.swift */,
 				55B9E40121959CC4009E89EF /* NewsBarView.swift */,
 				55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */,
+				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
+				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
 				55B9E3FA21958A38009E89EF /* UIViewController+Helpers.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
 				55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */,
@@ -252,6 +258,8 @@
 				55B9E3FB21958A38009E89EF /* UIViewController+Helpers.swift in Sources */,
 				55B9E3F52195887F009E89EF /* MainViewController.swift in Sources */,
 				55B9E3FD219596BE009E89EF /* NewsTableViewCell.swift in Sources */,
+				55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */,
+				55B9E3FF21959707009E89EF /* NewsView.swift in Sources */,
 				55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */,
 				55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */,
 				55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */,

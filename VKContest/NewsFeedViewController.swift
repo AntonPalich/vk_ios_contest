@@ -25,9 +25,11 @@ class NewsFeedViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var layout = NewsBarViewLayout()
-        layout.calculateLayoutFitting(CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude))
-        return layout.size.height
+        var headerViewLayout = NewsHeaderViewLayout()
+        headerViewLayout.calculateLayoutFitting(CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude))
+        var barViewlayout = NewsBarViewLayout()
+        barViewlayout.calculateLayoutFitting(CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude))
+        return headerViewLayout.size.height + barViewlayout.size.height
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
