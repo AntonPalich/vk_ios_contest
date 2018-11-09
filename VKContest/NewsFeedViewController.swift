@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NewsFeedViewController.swift
 //  VKContest
 //
 //  Created by Anton Schukin on 08/11/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NewsFeedViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
