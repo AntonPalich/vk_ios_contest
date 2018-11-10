@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  NewsFeedContainerViewController.swift
 //  VKContest
 //
 //  Created by Anton Schukin on 09/11/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class NewsFeedContainerViewController: UIViewController {
 
     private var searchController: UISearchController?
     private var newsFeedViewController: NewsFeedViewController?

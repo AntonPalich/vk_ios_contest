@@ -16,8 +16,15 @@ extension UIViewController {
 
     func vk_addChild(childController: UIViewController) {
         assert(childController.parent == nil, "Remove controller from other container first")
-        // willMoveToParentViewController automatically called within addChildViewController
+        // willMove(toParent:) automatically called within addChild()
         self.addChild(childController)
         childController.didMove(toParent: self)
+    }
+
+    func vk_removeFromParent() {
+        self.willMove(toParent: nil)
+        self.view.removeFromSuperview()
+        self.removeFromParent()
+        // didMove(toParent:) automatically called withing removeFromParent()
     }
 }
