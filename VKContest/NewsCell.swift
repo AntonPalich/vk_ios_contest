@@ -12,22 +12,7 @@ class NewsCell: UITableViewCell {
 
     private let headerView = NewsHeaderView()
     private let barView = NewsBarView()
-    private let textView: NewsTextView = {
-        let textView = NewsTextView()
-        textView.isEditable = false
-        textView.isSelectable = true
-        textView.dataDetectorTypes = .all
-        textView.scrollsToTop = false
-        textView.isScrollEnabled = false
-        textView.bounces = false
-        textView.bouncesZoom = false
-        textView.showsHorizontalScrollIndicator = false
-        textView.showsVerticalScrollIndicator = false
-        textView.isExclusiveTouch = true
-        textView.textContainer.lineFragmentPadding = 0
-        textView.textContainerInset = .zero
-        return textView
-    }()
+    private let textView = NewsTextView()
 
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,13 +22,13 @@ class NewsCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // Solve shadow problems later
+        // FIXME: Solve shadow problems
         self.clipsToBounds = true
         self.backgroundColor = .clear
         self.contentView.addSubview(self.backgroundImageView)
         self.contentView.addSubview(self.headerView)
-        self.contentView.addSubview(self.barView)
         self.contentView.addSubview(self.textView)
+        self.contentView.addSubview(self.barView)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,25 +40,14 @@ class NewsCell: UITableViewCell {
     struct ViewModel {
         let headerViewModel: NewsHeaderView.ViewModel
         let barViewModel: NewsBarView.ViewModel
-        let text: String
+        var textViewModel: NewsTextView.ViewModel
     }
 
     var viewModel: ViewModel? {
         didSet {
             self.headerView.viewModel = self.viewModel?.headerViewModel
             self.barView.viewModel = self.viewModel?.barViewModel
-            self.textView.attributedText = NSAttributedString(
-                string: self.viewModel?.text ?? "",
-                attributes: [
-                    .font: UIFont.newsTextFont,
-                    .foregroundColor: UIColor.newsTextColor,
-                    .paragraphStyle: {
-                        let paragraphStyle = NSMutableParagraphStyle()
-                        paragraphStyle.lineSpacing = 4
-                        return paragraphStyle
-                    }()
-                ]
-            )
+            self.textView.viewModel = self.viewModel?.textViewModel
         }
     }
 
@@ -83,6 +57,7 @@ class NewsCell: UITableViewCell {
         didSet {
             self.headerView.layout = self.layout.headerViewLayout
             self.barView.layout = self.layout.barViewLayout
+            self.textView.layout = self.layout.textViewLayout
             self.setNeedsLayout()
         }
     }
@@ -93,34 +68,5 @@ class NewsCell: UITableViewCell {
         self.headerView.frame = self.layout.headerViewFrame
         self.textView.frame = self.layout.textViewFrame
         self.barView.frame = self.layout.barViewFrame
-    }
-}
-
-private final class NewsTextView: UITextView {
-
-    override var canBecomeFirstResponder: Bool {
-        return false
-    }
-
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override var selectedRange: NSRange {
-        get {
-            return NSRange(location: 0, length: 0)
-        }
-        set {
-            // Part of the heaviest stack trace when scrolling (when updating text)
-        }
-    }
-
-    override var contentOffset: CGPoint {
-        get {
-            return .zero
-        }
-        set {
-            // Part of the heaviest stack trace when scrolling (when bounds are set)
-        }
     }
 }

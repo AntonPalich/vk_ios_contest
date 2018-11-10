@@ -26,11 +26,17 @@ class NewsFeedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.cellControllers.forEach({ $0.delegate = self })
+
+        self.tableView.allowsSelection = false
+        self.tableView.backgroundColor = .newsBackgroundColor
         self.tableView.keyboardDismissMode = .onDrag
         self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = .newsBackgroundColor
+        self.tableView.estimatedRowHeight = 0
         self.tableView.register(NewsCell.self, forCellReuseIdentifier: "reuseId")
         self.tableView.delegate = self
+
+        self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,5 +53,11 @@ class NewsFeedViewController: UITableViewController {
             self.cellControllers[indexPath.row].configure(cell: newsCell)
         }
         return cell
+    }
+}
+
+extension NewsFeedViewController: NewsCellControllerDelegate {
+    func controllerDidUpdateCell(_ controller: NewsCellController) {
+        self.tableView.reloadData()
     }
 }

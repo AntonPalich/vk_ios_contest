@@ -13,6 +13,7 @@
 		55B47CF12195FCE2005A42D5 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */; };
 		55B47CF32195FE7A005A42D5 /* UIFont+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CF22195FE7A005A42D5 /* UIFont+Styles.swift */; };
 		55B47CF921961062005A42D5 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47CF821961062005A42D5 /* UIButton+Helpers.swift */; };
+		55B47D03219641EC005A42D5 /* NewsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D02219641EC005A42D5 /* NewsTextView.swift */; };
 		55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */; };
 		55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */; };
 		55B9E3C32194DCAB009E89EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E3C22194DCAB009E89EF /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		55B47CF02195FCE2005A42D5 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		55B47CF22195FE7A005A42D5 /* UIFont+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Styles.swift"; sourceTree = "<group>"; };
 		55B47CF821961062005A42D5 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
+		55B47D02219641EC005A42D5 /* NewsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextView.swift; sourceTree = "<group>"; };
 		55B9E3B82194DCA9009E89EF /* VKContest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKContest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				55B9E4162195C29A009E89EF /* NewsCellController.swift */,
 				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
 				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
+				55B47D02219641EC005A42D5 /* NewsTextView.swift */,
 				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
 				55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */,
@@ -306,6 +309,7 @@
 				55B47CE52195E884005A42D5 /* UIColor+Styles.swift in Sources */,
 				55B9E4172195C29A009E89EF /* NewsCellController.swift in Sources */,
 				55B9E3FD219596BE009E89EF /* NewsCell.swift in Sources */,
+				55B47D03219641EC005A42D5 /* NewsTextView.swift in Sources */,
 				55B9E4092195AB46009E89EF /* NewsHeaderView.swift in Sources */,
 				55B9E4112195BDB3009E89EF /* UIImage+Helpers.swift in Sources */,
 				55B9E4072195A385009E89EF /* NewsBarViewLayout.swift in Sources */,
