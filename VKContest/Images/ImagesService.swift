@@ -22,8 +22,8 @@ class ImagesService {
 
         let task = self.session.dataTask(with: url) { (data, response, error) in
             if let data = data, let image = UIImage(data: data) {
-                self.cache.setObject(image, forKey: url as NSURL)
                 self.completionCallQueue.async {
+                    self.cache.setObject(image, forKey: url as NSURL)
                     completion(image)
                 }
             } else {
