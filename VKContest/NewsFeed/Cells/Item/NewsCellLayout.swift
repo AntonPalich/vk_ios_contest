@@ -17,6 +17,7 @@ struct NewsCellLayout {
     private(set) var backgroundImageViewFrame: CGRect = .zero
     private(set) var headerViewFrame: CGRect = .zero
     private(set) var textViewFrame: CGRect = .zero
+    private(set) var imageViewFrame: CGRect = .zero
     private(set) var barViewFrame: CGRect = .zero
     private(set) var size: CGSize = .zero
 
@@ -43,6 +44,7 @@ struct NewsCellLayout {
             size: self.headerViewLayout.size
         )
 
+        // FIXME: Поправить кейс когда нет текста
         self.textViewFrame = CGRect(
             origin: CGPoint(
                 x: self.textInsets.left,
@@ -51,10 +53,29 @@ struct NewsCellLayout {
             size: self.textViewLayout.size
         )
 
+        if let photoSize = viewModel.singlePhotoViewModel?.photo {
+            let photoWidth = size.width - 16
+            let aspectRatio = CGFloat(photoSize.width) / CGFloat(photoSize.height)
+            let photoHeight = ceil(photoWidth / aspectRatio)
+            self.imageViewFrame = CGRect(
+                x: 8.0,
+                y: self.textViewFrame.maxY + 10,
+                width: photoWidth,
+                height: photoHeight
+            )
+        } else {
+            self.imageViewFrame = CGRect(
+                x: 8.0,
+                y: self.textViewFrame.maxY,
+                width: 0,
+                height: 0
+            )
+        }
+
         self.barViewFrame = CGRect(
             origin: CGPoint(
                 x: self.barInsets.left,
-                y: self.textViewFrame.maxY
+                y: self.imageViewFrame.maxY
             ),
             size: self.barViewLayout.size
         )
@@ -64,6 +85,7 @@ struct NewsCellLayout {
                 + self.headerViewLayout.size.height
                 + self.textInsets.top
                 + self.textViewLayout.size.height
+                + self.imageViewFrame.height + (self.imageViewFrame.height > 0 ? 10 : 0)
                 + self.barViewLayout.size.height
                 + self.barInsets.bottom
         )

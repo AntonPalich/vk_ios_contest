@@ -38,6 +38,8 @@
 		55B47D4821987544005A42D5 /* NewsAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D4721987544005A42D5 /* NewsAttachment.swift */; };
 		55B47D4A219876C3005A42D5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D49219876C3005A42D5 /* Photo.swift */; };
 		55B47D4C219876FB005A42D5 /* PhotoSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D4B219876FB005A42D5 /* PhotoSize.swift */; };
+		55B47D5921989011005A42D5 /* NewsSinglePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D5821989011005A42D5 /* NewsSinglePhotoView.swift */; };
+		55B47D5C21989035005A42D5 /* NewsSinglePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D5B21989035005A42D5 /* NewsSinglePhotoViewModel.swift */; };
 		55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */; };
 		55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */; };
 		55B9E3C32194DCAB009E89EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E3C22194DCAB009E89EF /* Assets.xcassets */; };
@@ -99,6 +101,8 @@
 		55B47D4721987544005A42D5 /* NewsAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAttachment.swift; sourceTree = "<group>"; };
 		55B47D49219876C3005A42D5 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		55B47D4B219876FB005A42D5 /* PhotoSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSize.swift; sourceTree = "<group>"; };
+		55B47D5821989011005A42D5 /* NewsSinglePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSinglePhotoView.swift; sourceTree = "<group>"; };
+		55B47D5B21989035005A42D5 /* NewsSinglePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSinglePhotoViewModel.swift; sourceTree = "<group>"; };
 		55B9E3B82194DCA9009E89EF /* VKContest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKContest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 			children = (
 				55B47D5121987960005A42D5 /* Bar */,
 				55B47D522198796B005A42D5 /* Header */,
+				55B47D5721988FFC005A42D5 /* SinglePhoto */,
 				55B47D5321987975005A42D5 /* Text */,
 				55B9E3FC219596BE009E89EF /* NewsCell.swift */,
 				55B9E4182195C9B2009E89EF /* NewsCellLayout.swift */,
@@ -276,6 +281,15 @@
 				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
 			);
 			path = Text;
+			sourceTree = "<group>";
+		};
+		55B47D5721988FFC005A42D5 /* SinglePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				55B47D5821989011005A42D5 /* NewsSinglePhotoView.swift */,
+				55B47D5B21989035005A42D5 /* NewsSinglePhotoViewModel.swift */,
+			);
+			path = SinglePhoto;
 			sourceTree = "<group>";
 		};
 		55B9E3AF2194DCA9009E89EF = {
@@ -479,7 +493,9 @@
 				55B47D1721970C5A005A42D5 /* GetNewsRequest.swift in Sources */,
 				55B9E40221959CC4009E89EF /* NewsBarView.swift in Sources */,
 				55B47CF32195FE7A005A42D5 /* UIFont+Styles.swift in Sources */,
+				55B47D5C21989035005A42D5 /* NewsSinglePhotoViewModel.swift in Sources */,
 				55B9E3FB21958A38009E89EF /* UIViewController+Helpers.swift in Sources */,
+				55B47D5921989011005A42D5 /* NewsSinglePhotoView.swift in Sources */,
 				55B9E3F52195887F009E89EF /* NewsFeedContainerViewController.swift in Sources */,
 				55B47D22219723F2005A42D5 /* NewsLikes.swift in Sources */,
 				55B47D2421972415005A42D5 /* NewsReposts.swift in Sources */,
@@ -664,8 +680,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3G72X4MFUX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/iOS",
@@ -688,8 +705,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3G72X4MFUX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/iOS",

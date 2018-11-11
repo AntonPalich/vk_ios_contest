@@ -14,6 +14,13 @@ class NewsCell: UITableViewCell {
     private let barView = NewsBarView()
     private let textView = NewsTextView()
 
+    private let photoView: NewsSinglePhotoView = {
+        let photoView = NewsSinglePhotoView()
+        photoView.contentMode = .scaleAspectFill
+        photoView.clipsToBounds = true
+        return photoView
+    }()
+
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "CardWithShadow")
@@ -28,6 +35,7 @@ class NewsCell: UITableViewCell {
         self.contentView.addSubview(self.backgroundImageView)
         self.contentView.addSubview(self.headerView)
         self.contentView.addSubview(self.textView)
+        self.contentView.addSubview(self.photoView)
         self.contentView.addSubview(self.barView)
     }
 
@@ -42,17 +50,36 @@ class NewsCell: UITableViewCell {
 
     // MARK: ViewModel
 
-    struct ViewModel {
+    class ViewModel {
         let headerViewModel: NewsHeaderView.ViewModel
         let barViewModel: NewsBarView.ViewModel
         var textViewModel: NewsTextView.ViewModel
+        let singlePhotoViewModel: NewsSinglePhotoViewModel?
+
+        init(headerViewModel: NewsHeaderView.ViewModel,
+             barViewModel: NewsBarView.ViewModel,
+             textViewModel: NewsTextView.ViewModel,
+             singlePhotoViewModel: NewsSinglePhotoViewModel?) {
+            self.headerViewModel = headerViewModel
+            self.barViewModel = barViewModel
+            self.textViewModel = textViewModel
+            self.singlePhotoViewModel = singlePhotoViewModel
+        }
     }
 
     var viewModel: ViewModel? {
         didSet {
-            self.headerView.viewModel = self.viewModel?.headerViewModel
-            self.barView.viewModel = self.viewModel?.barViewModel
-            self.textView.viewModel = self.viewModel?.textViewModel
+            if let viewModel = self.viewModel {
+                self.headerView.viewModel = viewModel.headerViewModel
+                self.barView.viewModel = viewModel.barViewModel
+                self.textView.viewModel = viewModel.textViewModel
+                self.photoView.viewModel = viewModel.singlePhotoViewModel
+            } else {
+                self.headerView.viewModel = nil
+                self.barView.viewModel = nil
+                self.textView.viewModel = nil
+                self.photoView.viewModel = nil
+            }
         }
     }
 
@@ -73,5 +100,6 @@ class NewsCell: UITableViewCell {
         self.headerView.frame = self.layout.headerViewFrame
         self.textView.frame = self.layout.textViewFrame
         self.barView.frame = self.layout.barViewFrame
+        self.photoView.frame = self.layout.imageViewFrame
     }
 }

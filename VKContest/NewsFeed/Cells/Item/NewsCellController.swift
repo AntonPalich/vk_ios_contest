@@ -12,23 +12,32 @@ protocol NewsCellControllerDelegate: AnyObject {
     func controllerDidUpdateCell(_ controller: NewsCellController)
 }
 
-class NewsCellController: CellController {
+final class NewsCellController: CellController {
 
     weak var delegate: NewsCellControllerDelegate?
 
     private let item: NewsItem
     private let avatarURL: String
+    private let photo: PhotoSize?
     private let imagesService: ImagesService
 
     init(item: NewsItem, profile: Profile, imagesService: ImagesService) {
         self.item = item
         self.avatarURL = profile.photoUrl
         self.imagesService = imagesService
+        self.photo = item.attachments?.first(where: { $0.photo != nil })?.photo?.sizes.first(where: { $0.type == "x" })
 
         self.viewModel = NewsCell.ViewModel(
             headerViewModel: self.makeHeaderViewModel(from: item, profile: profile),
             barViewModel: self.makeBarViewModel(from: item),
-            textViewModel: self.makeTextViewModel(from: item)
+            textViewModel: self.makeTextViewModel(from: item),
+            singlePhotoViewModel: {
+                if let photo = self.photo {
+                    return NewsSinglePhotoViewModel(photo: photo, imagesService: self.imagesService)
+                } else {
+                    return nil
+                }
+            }()
         )
     }
 
@@ -36,11 +45,19 @@ class NewsCellController: CellController {
         self.item = item
         self.avatarURL = group.photoUrl
         self.imagesService = imagesService
+        self.photo = item.attachments?.first(where: { $0.photo != nil })?.photo?.sizes.first(where: { $0.type == "x" })
 
         self.viewModel = NewsCell.ViewModel(
             headerViewModel: self.makeHeaderViewModel(from: item, group: group),
             barViewModel: self.makeBarViewModel(from: item),
-            textViewModel: self.makeTextViewModel(from: item)
+            textViewModel: self.makeTextViewModel(from: item),
+            singlePhotoViewModel: {
+                if let photo = self.photo {
+                    return NewsSinglePhotoViewModel(photo: photo, imagesService: self.imagesService)
+                } else {
+                    return nil
+                }
+            }()
         )
     }
 
@@ -87,10 +104,12 @@ class NewsCellController: CellController {
 
     func onWillDisplayCell() {
         if let url = URL(string: self.avatarURL) {
-            self.imagesService.loadImage(from: url) { (image) in
-                self.viewModel?.headerViewModel.avatarImage.value = image
+            self.imagesService.loadImage(from: url) { [weak self] (image) in
+                self?.viewModel?.headerViewModel.avatarImage.value = image
             }
         }
+
+        self.viewModel?.singlePhotoViewModel?.onWillDisplay()
     }
 
     func onDidEndDisplayingCell() {
