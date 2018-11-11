@@ -211,23 +211,71 @@
 		55B47D40219857F6005A42D5 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
-				55B47D412198583F005A42D5 /* CellController.swift */,
-				55B47D4521985B5A005A42D5 /* LoadingIndicatorCell.swift */,
-				55B47D4321985B22005A42D5 /* LoadingIndicatorCellController.swift */,
+				55B47D4D21987924005A42D5 /* Cells */,
 				55B9E3F42195887F009E89EF /* NewsFeedContainerViewController.swift */,
 				55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */,
 				55B47D2721972E03005A42D5 /* NewsFeedViewModel.swift */,
-				55B9E40121959CC4009E89EF /* NewsBarView.swift */,
-				55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		55B47D4D21987924005A42D5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				55B47D4F21987940005A42D5 /* Item */,
+				55B47D4E2198792D005A42D5 /* Loading Indicator */,
+				55B47D412198583F005A42D5 /* CellController.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		55B47D4E2198792D005A42D5 /* Loading Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				55B47D4521985B5A005A42D5 /* LoadingIndicatorCell.swift */,
+				55B47D4321985B22005A42D5 /* LoadingIndicatorCellController.swift */,
+			);
+			path = "Loading Indicator";
+			sourceTree = "<group>";
+		};
+		55B47D4F21987940005A42D5 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				55B47D5121987960005A42D5 /* Bar */,
+				55B47D522198796B005A42D5 /* Header */,
+				55B47D5321987975005A42D5 /* Text */,
 				55B9E3FC219596BE009E89EF /* NewsCell.swift */,
 				55B9E4182195C9B2009E89EF /* NewsCellLayout.swift */,
 				55B9E4162195C29A009E89EF /* NewsCellController.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		55B47D5121987960005A42D5 /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				55B9E40121959CC4009E89EF /* NewsBarView.swift */,
+				55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */,
+			);
+			path = Bar;
+			sourceTree = "<group>";
+		};
+		55B47D522198796B005A42D5 /* Header */ = {
+			isa = PBXGroup;
+			children = (
 				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
 				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		55B47D5321987975005A42D5 /* Text */ = {
+			isa = PBXGroup;
+			children = (
 				55B47D02219641EC005A42D5 /* NewsTextView.swift */,
 				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
 			);
-			path = NewsFeed;
+			path = Text;
 			sourceTree = "<group>";
 		};
 		55B9E3AF2194DCA9009E89EF = {
