@@ -16,7 +16,15 @@ class NewsCellController {
 
     weak var delegate: NewsCellControllerDelegate?
 
-    init(item: NewsItem, profile: Profile) {
+    private let item: NewsItem
+    private let avatarURL: String
+    private let imagesService: ImagesService
+
+    init(item: NewsItem, profile: Profile, imagesService: ImagesService) {
+        self.item = item
+        self.avatarURL = profile.photoUrl
+        self.imagesService = imagesService
+
         self.viewModel = NewsCell.ViewModel(
             headerViewModel: self.makeHeaderViewModel(from: item, profile: profile),
             barViewModel: self.makeBarViewModel(from: item),
@@ -24,15 +32,17 @@ class NewsCellController {
         )
     }
 
-    init(item: NewsItem, group: Group) {
+    init(item: NewsItem, group: Group, imagesService: ImagesService) {
+        self.item = item
+        self.avatarURL = group.photoUrl
+        self.imagesService = imagesService
+
         self.viewModel = NewsCell.ViewModel(
             headerViewModel: self.makeHeaderViewModel(from: item, group: group),
             barViewModel: self.makeBarViewModel(from: item),
             textViewModel: self.makeTextViewModel(from: item)
         )
     }
-
-    static let placeholderImage = UIImage(color: UIColor.lightGray, size: CGSize(width: 36, height: 36))
 
     // MARK: - Cell configuration
 
@@ -62,13 +72,20 @@ class NewsCellController {
         cell.layout = self.layout
     }
 
+    func willDisplay() {
+        if let url = URL(string: self.avatarURL) {
+            self.imagesService.loadImage(from: url) { (image) in
+                self.viewModel?.headerViewModel.avatarImage.value = image
+            }
+        }
+    }
+    
     // MARK: - View Models
 
     private var viewModel: NewsCell.ViewModel?
 
     private func makeHeaderViewModel(from item: NewsItem, profile: Profile) -> NewsHeaderView.ViewModel {
         return NewsHeaderView.ViewModel(
-            avatarImage: NewsCellController.placeholderImage,
             name: "\(profile.firstName) \(profile.lastName)",
             date: NewsCellController.dateFormatter.string(from: Date(timeIntervalSince1970: item.date))
         )
@@ -76,7 +93,6 @@ class NewsCellController {
 
     private func makeHeaderViewModel(from item: NewsItem, group: Group) -> NewsHeaderView.ViewModel {
         return NewsHeaderView.ViewModel(
-            avatarImage: NewsCellController.placeholderImage,
             name: "\(group.name)",
             date: NewsCellController.dateFormatter.string(from: Date(timeIntervalSince1970: item.date))
         )

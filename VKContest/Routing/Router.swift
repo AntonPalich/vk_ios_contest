@@ -31,7 +31,8 @@ class Router {
             self.present(viewController: viewController)
         case .newsFeed(let token):
             let viewController = NewsFeedContainerViewController(
-                networkService: NetworkService(token: token)
+                networkService: NetworkService(token: token),
+                imagesService: ImagesService()
             )
             self.present(viewController: UINavigationController(rootViewController: viewController))
         }

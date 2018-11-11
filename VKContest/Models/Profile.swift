@@ -14,9 +14,11 @@ struct Profile: Decodable {
         case id
         case firstName = "first_name"
         case lastName = "last_name"
+        case photoUrl = "photo_50"
     }
 
     let id: Int
     let firstName: String
     let lastName: String
+    let photoUrl: String
 }

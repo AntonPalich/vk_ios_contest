@@ -14,9 +14,11 @@ class NewsFeedContainerViewController: UIViewController {
     private var newsFeedViewController: NewsFeedViewController?
 
     private let networkService: NetworkService
+    private let imagesService: ImagesService
 
-    init(networkService: NetworkService) {
+    init(networkService: NetworkService, imagesService: ImagesService) {
         self.networkService = networkService
+        self.imagesService = imagesService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,7 +35,8 @@ class NewsFeedContainerViewController: UIViewController {
 
         self.searchController = UISearchController(
             searchResultsController: NewsFeedViewController(
-                viewModel: NewsFeedViewModel(networkService: self.networkService)
+                viewModel: NewsFeedViewModel(networkService: self.networkService),
+                imagesService: self.imagesService
             )
         )
         self.searchController?.searchBar.searchBarStyle = .minimal
@@ -42,7 +45,8 @@ class NewsFeedContainerViewController: UIViewController {
         let newsFeedViewController = NewsFeedViewController(
             viewModel: NewsFeedViewModel(
                 networkService: self.networkService
-            )
+            ),
+            imagesService: self.imagesService
         )
         self.vk_addSubview(from: newsFeedViewController)
         newsFeedViewController.view.frame = self.view.bounds

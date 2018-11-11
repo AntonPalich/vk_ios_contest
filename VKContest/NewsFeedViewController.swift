@@ -11,9 +11,12 @@ import UIKit
 class NewsFeedViewController: UITableViewController {
 
     private let viewModel: NewsFeedViewModel
+    private let imagesService: ImagesService
 
-    init(viewModel: NewsFeedViewModel) {
+    init(viewModel: NewsFeedViewModel, imagesService: ImagesService) {
         self.viewModel = viewModel
+        self.imagesService = imagesService
+
         super.init(nibName: nil, bundle: nil)
 
         self.viewModel.itemsUpdatedCallback = { [weak self] in
@@ -56,6 +59,10 @@ class NewsFeedViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.cellControllers[indexPath.row].willDisplay()
+    }
+
     // MARK: Controllers
 
     private var cellControllers: [NewsCellController] = []
@@ -78,9 +85,17 @@ class NewsFeedViewController: UITableViewController {
             let controllers: [NewsCellController] = items.map { (item) in
                 let controller: NewsCellController = {
                     if item.source_id >= 0 {
-                        return NewsCellController(item: item, profile: profilesMap[item.source_id]!)
+                        return NewsCellController(
+                            item: item,
+                            profile: profilesMap[item.source_id]!,
+                            imagesService: self.imagesService
+                        )
                     } else {
-                        return NewsCellController(item: item, group: groupsMap[abs(item.source_id)]!)
+                        return NewsCellController(
+                            item: item,
+                            group: groupsMap[abs(item.source_id)]!,
+                            imagesService: self.imagesService
+                        )
                     }
                 }()
                 controller.delegate = self

@@ -25,10 +25,18 @@ class NewsHeaderView: UIView {
 
     // MARK: ViewModel
 
-    struct ViewModel {
-        let avatarImage: UIImage?
+    class ViewModel {
+
+        static let avatarPlaceholder = UIImage(color: UIColor.lightGray, size: CGSize(width: 36, height: 36))
+        var avatarImage = Observable<UIImage?>(ViewModel.avatarPlaceholder)
+
         let name: String
         let date: String
+
+        init(name: String, date: String) {
+            self.name = name
+            self.date = date
+        }
     }
 
     var viewModel: ViewModel? {
@@ -39,13 +47,17 @@ class NewsHeaderView: UIView {
 
     private func update() {
         if let viewModel = self.viewModel {
-            self.set(avatarImage: viewModel.avatarImage)
+            self.set(avatarImage: viewModel.avatarImage.value)
             self.set(name: viewModel.name)
             self.set(date: viewModel.date)
+            self.avatarImageObserver = viewModel.avatarImage.observe { [weak self] (_, newAvatar) in
+                self?.set(avatarImage: newAvatar)
+            }
         } else {
             self.set(avatarImage: nil)
             self.set(name: "")
             self.set(date: "")
+            self.avatarImageObserver = nil
         }
     }
 
@@ -72,6 +84,8 @@ class NewsHeaderView: UIView {
         let imageView = UIImageView()
         return imageView
     }()
+
+    private var avatarImageObserver: AnyObject?
 
     private func set(avatarImage: UIImage?) {
         self.avatarImageView.image = avatarImage

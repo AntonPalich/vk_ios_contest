@@ -10,36 +10,62 @@ import Foundation
 
 public class Observable<T> {
 
+    private var _value: T
+
     public init(_ value: T) {
-        self.value = value
+        self._value = value
     }
 
     public var value: T {
-        didSet {
-            self.cleanDeadObservers()
-            for observer in self.observers {
-                observer.closure(oldValue, self.value)
-            }
+        get {
+            return _value
+        }
+        set {
+            self.setValue(newValue)
         }
     }
 
-    public func observe(_ observer: AnyObject, closure: @escaping (_ old: T, _ new: T) -> Void) {
-        self.observers.append(Observer(owner: observer, closure: closure))
-        self.cleanDeadObservers()
+    public func setValue(_ value: T) {
+        let oldValue = self._value
+        self._value = value
+
+        for observer in self.observers {
+            observer.closure(oldValue, self.value)
+        }
     }
 
-    private func cleanDeadObservers() {
-        self.observers = self.observers.filter { $0.owner != nil }
+    public func observe(_ closure: @escaping (_ old: T, _ new: T) -> Void) -> AnyObject {
+        let observer = Observer(closure: closure)
+        self.observers.append(observer)
+        return ObserverWrapper(observer: observer, onDeinit: { [weak self] observer in
+            self?.removeObserver(observer)
+        })
+    }
+
+    fileprivate func removeObserver(_ observer: Observer<T>) {
+        self.observers = self.observers.filter { $0 !== observer }
     }
 
     private lazy var observers = [Observer<T>]()
 }
 
-private struct Observer<T> {
-    weak var owner: AnyObject?
+private class Observer<T> {
     let closure: (_ old: T, _ new: T) -> Void
-    init (owner: AnyObject, closure: @escaping (_ old: T, _ new: T) -> Void) {
-        self.owner = owner
+    init (closure: @escaping (_ old: T, _ new: T) -> Void) {
         self.closure = closure
+    }
+}
+
+private class ObserverWrapper<T> {
+    let observer: Observer<T>
+    let onDeinit: (Observer<T>) -> Void
+
+    init(observer: Observer<T>, onDeinit: @escaping (Observer<T>) -> Void) {
+        self.observer = observer
+        self.onDeinit = onDeinit
+    }
+
+    deinit {
+        self.onDeinit(self.observer)
     }
 }
