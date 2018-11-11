@@ -22,17 +22,28 @@ final class NewsFeedViewModel {
         }
     }
 
-    private(set) var profiles: [Profile] = []
-    private(set) var groups: [Group] = []
+    private(set) var profiles: [Int: Profile] = [:]
+    private(set) var groups: [Int: Group] = [:]
+
+    private var startFrom: String?
 
     func onViewDidLoad() {
-        let request = GetNewsRequest(startFrom: nil)
+        self.loadNextPage()
+    }
+
+    var isLoadingNextPage = false
+    func loadNextPage() {
+        guard !self.isLoadingNextPage else { return }
+        self.isLoadingNextPage = true
+        let request = GetNewsRequest(startFrom: self.startFrom)
         self.networkService.send(request: request) { [weak self] (_) in
             guard let sSelf = self else { return }
+            sSelf.isLoadingNextPage = false
             guard let response = request.response else { return }
-            sSelf.profiles = response.profiles
-            sSelf.groups = response.groups
-            sSelf.items = response.items
+            sSelf.startFrom = response.nextFrom
+            response.profiles.forEach { sSelf.profiles[$0.id] = $0 }
+            response.groups.forEach { sSelf.groups[$0.id] = $0 }
+            sSelf.items.append(contentsOf: response.items)
         }
     }
 

@@ -12,7 +12,7 @@ protocol NewsCellControllerDelegate: AnyObject {
     func controllerDidUpdateCell(_ controller: NewsCellController)
 }
 
-class NewsCellController {
+class NewsCellController: CellController {
 
     weak var delegate: NewsCellControllerDelegate?
 
@@ -59,6 +59,18 @@ class NewsCellController {
         self.isLayoutInvalidated = true
     }
 
+    // MARK: - CellControlelr
+
+    static var reuseIdentifier: String = "NewsCell"
+
+    static func register(in tableView: UITableView) {
+        tableView.register(NewsCell.self, forCellReuseIdentifier: self.reuseIdentifier)
+    }
+
+    func dequeuCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: NewsCellController.reuseIdentifier, for: indexPath)
+    }
+
     func heightForCell(in tableView: UITableView) -> CGFloat {
         if self.isLayoutInvalidated {
             let size = CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude)
@@ -67,17 +79,21 @@ class NewsCellController {
         return self.layout.size.height
     }
 
-    func configure(cell: NewsCell) {
+    func configure(cell: UITableViewCell) {
+        guard let cell = cell as? NewsCell else { fatalError("wrong cell type") }
         cell.viewModel = self.viewModel
         cell.layout = self.layout
     }
 
-    func willDisplay() {
+    func onWillDisplayCell() {
         if let url = URL(string: self.avatarURL) {
             self.imagesService.loadImage(from: url) { (image) in
                 self.viewModel?.headerViewModel.avatarImage.value = image
             }
         }
+    }
+
+    func onDidEndDisplayingCell() {
     }
     
     // MARK: - View Models

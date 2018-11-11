@@ -27,7 +27,7 @@ class GetNewsRequest: NetworkRequest {
     var methodParameters: [String : String] {
         var parameters = ["filters": "post"]
         if let startFrom = startFrom {
-            parameters["startFrom"] = startFrom
+            parameters["start_from"] = startFrom
         }
         return parameters
     }

@@ -36,9 +36,11 @@ class NewsFeedViewController: UITableViewController {
         self.tableView.keyboardDismissMode = .onDrag
         self.tableView.separatorStyle = .none
         self.tableView.estimatedRowHeight = 0
-        self.tableView.register(NewsCell.self, forCellReuseIdentifier: "reuseId")
         self.tableView.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
+
+        NewsCellController.register(in: self.tableView)
+        LoadingIndicatorCellController.register(in: self.tableView)
 
         self.viewModel.onViewDidLoad()
     }
@@ -52,20 +54,19 @@ class NewsFeedViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseId", for: indexPath)
-        if let newsCell = cell as? NewsCell {
-            self.cellControllers[indexPath.row].configure(cell: newsCell)
-        }
+        let cellController = self.cellControllers[indexPath.row]
+        let cell = cellController.dequeuCell(in: tableView, for: indexPath)
+        cellController.configure(cell: cell)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        self.cellControllers[indexPath.row].willDisplay()
+        self.cellControllers[indexPath.row].onWillDisplayCell()
     }
 
     // MARK: Controllers
 
-    private var cellControllers: [NewsCellController] = []
+    private var cellControllers: [CellController] = []
 
     private func updateControllers() {
         // Запоминаем данные для обновления
@@ -76,24 +77,18 @@ class NewsFeedViewController: UITableViewController {
 
         // FIXME: Сделать очередь обновлений. Создавать контроллеры в фоне
         DispatchQueue.global(qos: .userInitiated).async {
-            var profilesMap: [Int: Profile] = [:]
-            profiles.forEach { profilesMap[$0.id] = $0 }
-
-            var groupsMap: [Int: Group] = [:]
-            groups.forEach { groupsMap[$0.id] = $0 }
-            
-            let controllers: [NewsCellController] = items.map { (item) in
+            var controllers: [CellController] = items.map { (item) in
                 let controller: NewsCellController = {
                     if item.source_id >= 0 {
                         return NewsCellController(
                             item: item,
-                            profile: profilesMap[item.source_id]!,
+                            profile: profiles[item.source_id]!,
                             imagesService: self.imagesService
                         )
                     } else {
                         return NewsCellController(
                             item: item,
-                            group: groupsMap[abs(item.source_id)]!,
+                            group: groups[abs(item.source_id)]!,
                             imagesService: self.imagesService
                         )
                     }
@@ -102,6 +97,9 @@ class NewsFeedViewController: UITableViewController {
                 controller.prepareLayout(fittingSize: layoutSize)
                 return controller
             }
+            controllers.append(LoadingIndicatorCellController(onDisplayed: {
+                self.viewModel.loadNextPage()
+            }))
             DispatchQueue.main.async {
                 self.cellControllers = controllers
                 self.tableView.reloadData()

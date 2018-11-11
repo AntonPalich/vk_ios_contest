@@ -32,6 +32,9 @@
 		55B47D3421982971005A42D5 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D3321982971005A42D5 /* Group.swift */; };
 		55B47D3821983B82005A42D5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D3721983B82005A42D5 /* Observable.swift */; };
 		55B47D3B21984817005A42D5 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D3A21984817005A42D5 /* ImagesService.swift */; };
+		55B47D422198583F005A42D5 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D412198583F005A42D5 /* CellController.swift */; };
+		55B47D4421985B22005A42D5 /* LoadingIndicatorCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D4321985B22005A42D5 /* LoadingIndicatorCellController.swift */; };
+		55B47D4621985B5A005A42D5 /* LoadingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B47D4521985B5A005A42D5 /* LoadingIndicatorCell.swift */; };
 		55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */; };
 		55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */; };
 		55B9E3C32194DCAB009E89EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9E3C22194DCAB009E89EF /* Assets.xcassets */; };
@@ -87,6 +90,9 @@
 		55B47D3321982971005A42D5 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		55B47D3721983B82005A42D5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		55B47D3A21984817005A42D5 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
+		55B47D412198583F005A42D5 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
+		55B47D4321985B22005A42D5 /* LoadingIndicatorCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorCellController.swift; sourceTree = "<group>"; };
+		55B47D4521985B5A005A42D5 /* LoadingIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorCell.swift; sourceTree = "<group>"; };
 		55B9E3B82194DCA9009E89EF /* VKContest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKContest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +202,9 @@
 		55B47D40219857F6005A42D5 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				55B47D412198583F005A42D5 /* CellController.swift */,
+				55B47D4521985B5A005A42D5 /* LoadingIndicatorCell.swift */,
+				55B47D4321985B22005A42D5 /* LoadingIndicatorCellController.swift */,
 				55B9E3F42195887F009E89EF /* NewsFeedContainerViewController.swift */,
 				55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */,
 				55B47D2721972E03005A42D5 /* NewsFeedViewModel.swift */,
@@ -419,6 +428,7 @@
 				55B47D32219828CB005A42D5 /* Profile.swift in Sources */,
 				55B47CE52195E884005A42D5 /* UIColor+Styles.swift in Sources */,
 				55B9E4172195C29A009E89EF /* NewsCellController.swift in Sources */,
+				55B47D422198583F005A42D5 /* CellController.swift in Sources */,
 				55B47D2821972E03005A42D5 /* NewsFeedViewModel.swift in Sources */,
 				55B47D20219723CF005A42D5 /* NewsComments.swift in Sources */,
 				55B9E3FD219596BE009E89EF /* NewsCell.swift in Sources */,
@@ -432,6 +442,8 @@
 				55B47D3421982971005A42D5 /* Group.swift in Sources */,
 				55B47CF921961062005A42D5 /* UIButton+Helpers.swift in Sources */,
 				55B47CE72195F10C005A42D5 /* CGSize+Helpers.swift in Sources */,
+				55B47D4421985B22005A42D5 /* LoadingIndicatorCellController.swift in Sources */,
+				55B47D4621985B5A005A42D5 /* LoadingIndicatorCell.swift in Sources */,
 				55961EC82195CE0A00784F09 /* NewsTextViewLayout.swift in Sources */,
 				55B9E3BE2194DCA9009E89EF /* NewsFeedViewController.swift in Sources */,
 				55B9E3BC2194DCA9009E89EF /* AppDelegate.swift in Sources */,
