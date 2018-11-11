@@ -31,6 +31,11 @@ class NewsFeedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = .newsBackgroundColor
+        refreshControl.addTarget(self, action: #selector(handlRefreshControlStateChanged), for: .valueChanged)
+        self.refreshControl = refreshControl
+
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = .newsBackgroundColor
         self.tableView.keyboardDismissMode = .onDrag
@@ -64,18 +69,24 @@ class NewsFeedViewController: UITableViewController {
         self.cellControllers[indexPath.row].onWillDisplayCell()
     }
 
+    @objc
+    private func handlRefreshControlStateChanged() {
+        if self.refreshControl?.isRefreshing == true {
+            self.viewModel.reload()
+        }
+    }
+
     // MARK: Controllers
 
     private var cellControllers: [CellController] = []
 
     private func updateControllers() {
-        // Запоминаем данные для обновления
         let items = self.viewModel.items
         let profiles = self.viewModel.profiles
         let groups = self.viewModel.groups
         let layoutSize = CGSize(width: self.tableView.bounds.width, height: .greatestFiniteMagnitude)
 
-        // FIXME: Сделать очередь обновлений. Создавать контроллеры в фоне
+        // FIXME: Сделать очередь обновлений. Создавать контроллеры в фоне. Не пересоздавать существующие контроллеры
         DispatchQueue.global(qos: .userInitiated).async {
             var controllers: [CellController] = items.map { (item) in
                 let controller: NewsCellController = {
@@ -101,6 +112,9 @@ class NewsFeedViewController: UITableViewController {
                 self.viewModel.loadNextPage()
             }))
             DispatchQueue.main.async {
+                // FIXME: Убрать в другое место
+                self.refreshControl?.endRefreshing()
+
                 self.cellControllers = controllers
                 self.tableView.reloadData()
             }

@@ -16,12 +16,9 @@ final class NewsFeedViewModel {
         self.networkService = networkService
     }
 
-    private(set) var items: [NewsItem] = [] {
-        didSet {
-            self.itemsUpdatedCallback?()
-        }
-    }
+    var itemsUpdatedCallback: (() -> Void)?
 
+    private(set) var items: [NewsItem] = []
     private(set) var profiles: [Int: Profile] = [:]
     private(set) var groups: [Int: Group] = [:]
 
@@ -31,7 +28,7 @@ final class NewsFeedViewModel {
         self.loadNextPage()
     }
 
-    var isLoadingNextPage = false
+    private var isLoadingNextPage = false
     func loadNextPage() {
         guard !self.isLoadingNextPage else { return }
         self.isLoadingNextPage = true
@@ -44,8 +41,29 @@ final class NewsFeedViewModel {
             response.profiles.forEach { sSelf.profiles[$0.id] = $0 }
             response.groups.forEach { sSelf.groups[$0.id] = $0 }
             sSelf.items.append(contentsOf: response.items)
+            sSelf.itemsUpdatedCallback?()
         }
     }
 
-    var itemsUpdatedCallback: (() -> Void)?
+    private var isReloading = false
+    func reload() {
+        guard !self.isReloading else { return }
+        self.isReloading = true
+        let request = GetNewsRequest(startFrom: nil)
+        self.networkService.send(request: request) { [weak self] (_) in
+            guard let sSelf = self else { return }
+            sSelf.isReloading = false
+            guard let response = request.response else { return }
+            sSelf.startFrom = response.nextFrom
+
+            sSelf.profiles.removeAll()
+            sSelf.groups.removeAll()
+            sSelf.items.removeAll()
+            
+            response.profiles.forEach { sSelf.profiles[$0.id] = $0 }
+            response.groups.forEach { sSelf.groups[$0.id] = $0 }
+            sSelf.items.append(contentsOf: response.items)
+            sSelf.itemsUpdatedCallback?()
+        }
+    }
 }
