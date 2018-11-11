@@ -10,6 +10,7 @@ import UIKit
 
 class NewsFeedContainerViewController: UIViewController {
 
+    private var topView = UIView()
     private var searchController: UISearchController?
     private var newsFeedViewController: NewsFeedViewController?
 
@@ -52,10 +53,26 @@ class NewsFeedContainerViewController: UIViewController {
         newsFeedViewController.view.frame = self.view.bounds
         newsFeedViewController.tableView.tableHeaderView = self.searchController?.searchBar
         self.newsFeedViewController = newsFeedViewController
+
+        self.topView.backgroundColor = UIColor(hex: 0xFCFCFC)
+        self.topView.layer.shadowOpacity = 0.5
+        self.topView.layer.masksToBounds = false
+        self.view.addSubview(self.topView)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let safeAreaTop: CGFloat = {
+            if #available(iOS 11.0, *) {
+                return self.view.safeAreaInsets.top
+            } else {
+                return self.topLayoutGuide.length
+            }
+        }()
+        self.topView.frame = CGRect(
+            origin: .zero,
+            size: CGSize(width: self.view.bounds.width, height: safeAreaTop)
+        )
         self.newsFeedViewController?.view.frame = self.view.bounds
     }
 }
