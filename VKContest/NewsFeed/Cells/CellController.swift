@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CellController.swift
 //  VKContest
 //
 //  Created by Anton Schukin on 11/11/2018.

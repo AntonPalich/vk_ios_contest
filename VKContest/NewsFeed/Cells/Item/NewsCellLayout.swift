@@ -13,17 +13,21 @@ struct NewsCellLayout {
     private(set) var headerViewLayout = NewsHeaderViewLayout()
     private(set) var textViewLayout = NewsTextViewLayout()
     private(set) var barViewLayout = NewsBarViewLayout()
+    private(set) var multiplePhotoLayout = NewsMultiplePhotoViewLayout()
 
     private(set) var backgroundImageViewFrame: CGRect = .zero
     private(set) var headerViewFrame: CGRect = .zero
     private(set) var textViewFrame: CGRect = .zero
     private(set) var imageViewFrame: CGRect = .zero
+    private(set) var multiplePhotoViewFrame: CGRect = .zero
     private(set) var barViewFrame: CGRect = .zero
     private(set) var size: CGSize = .zero
 
     private let backgroundImageViewInsets = UIEdgeInsets(top: 0, left: -10, bottom: -10, right: -10)
     private let headerInsets = UIEdgeInsets(top: 12, left: 20, bottom: 0, right: 20)
     private let textInsets = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
+    private let singlePhotoInsets = UIEdgeInsets(top: 10, left: 8, bottom: 0, right: 8)
+    private let multiplePhotoInsets = UIEdgeInsets(top: 10, left: 8, bottom: 0, right: 8)
     private let barInsets = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 20)
 
     mutating func calculateLayoutFitting(_ size: CGSize, for viewModel: NewsCell.ViewModel) {
@@ -53,21 +57,40 @@ struct NewsCellLayout {
             size: self.textViewLayout.size
         )
 
+        let photoWidth = size.inset(by: self.singlePhotoInsets).width
         if let photoSize = viewModel.singlePhotoViewModel?.photo {
-            let photoWidth = size.width - 16
             let aspectRatio = CGFloat(photoSize.width) / CGFloat(photoSize.height)
             let photoHeight = ceil(photoWidth / aspectRatio)
             self.imageViewFrame = CGRect(
-                x: 8.0,
-                y: self.textViewFrame.maxY + 10,
+                x: self.singlePhotoInsets.left,
+                y: self.textViewFrame.maxY + self.singlePhotoInsets.top,
                 width: photoWidth,
                 height: photoHeight
             )
         } else {
             self.imageViewFrame = CGRect(
-                x: 8.0,
+                x: self.singlePhotoInsets.left,
                 y: self.textViewFrame.maxY,
-                width: 0,
+                width: photoWidth,
+                height: 0
+            )
+        }
+
+        if let _ = viewModel.multiplePhotoViewModel {
+            let multiplePhotoSize = size.inset(by: self.multiplePhotoInsets)
+            self.multiplePhotoLayout.calculateLayoutFitting(multiplePhotoSize)
+            self.multiplePhotoViewFrame = CGRect(
+                origin: CGPoint(
+                    x: self.multiplePhotoInsets.left,
+                    y: self.imageViewFrame.maxY + self.multiplePhotoInsets.top
+                ),
+                size: self.multiplePhotoLayout.size
+            )
+        } else {
+            self.multiplePhotoViewFrame = CGRect(
+                x: self.multiplePhotoInsets.left,
+                y: self.imageViewFrame.maxY,
+                width: photoWidth,
                 height: 0
             )
         }
@@ -75,20 +98,12 @@ struct NewsCellLayout {
         self.barViewFrame = CGRect(
             origin: CGPoint(
                 x: self.barInsets.left,
-                y: self.imageViewFrame.maxY
+                y: self.multiplePhotoViewFrame.maxY
             ),
             size: self.barViewLayout.size
         )
 
-        let height = (
-            self.headerInsets.top
-                + self.headerViewLayout.size.height
-                + self.textInsets.top
-                + self.textViewLayout.size.height
-                + self.imageViewFrame.height + (self.imageViewFrame.height > 0 ? 10 : 0)
-                + self.barViewLayout.size.height
-                + self.barInsets.bottom
-        )
+        let height = self.barViewFrame.maxY + self.barInsets.bottom
         self.size = CGSize(width: size.width, height: height)
 
         let backgroundImageViewSize = self.size.inset(by: self.backgroundImageViewInsets)

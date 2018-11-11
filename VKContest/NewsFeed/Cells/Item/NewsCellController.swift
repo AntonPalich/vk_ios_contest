@@ -18,26 +18,20 @@ final class NewsCellController: CellController {
 
     private let item: NewsItem
     private let avatarURL: String
-    private let photo: PhotoSize?
     private let imagesService: ImagesService
 
     init(item: NewsItem, profile: Profile, imagesService: ImagesService) {
         self.item = item
         self.avatarURL = profile.photoUrl
         self.imagesService = imagesService
-        self.photo = item.attachments?.first(where: { $0.photo != nil })?.photo?.sizes.first(where: { $0.type == "x" })
 
+        let photoViewModels = self.makePhotoViewModels(from: item)
         self.viewModel = NewsCell.ViewModel(
             headerViewModel: self.makeHeaderViewModel(from: item, profile: profile),
             barViewModel: self.makeBarViewModel(from: item),
             textViewModel: self.makeTextViewModel(from: item),
-            singlePhotoViewModel: {
-                if let photo = self.photo {
-                    return NewsSinglePhotoViewModel(photo: photo, imagesService: self.imagesService)
-                } else {
-                    return nil
-                }
-            }()
+            singlePhotoViewModel: photoViewModels.count == 1 ? photoViewModels[0] : nil,
+            multiplePhotoViewModel: photoViewModels.count > 1 ? photoViewModels : nil
         )
     }
 
@@ -45,19 +39,14 @@ final class NewsCellController: CellController {
         self.item = item
         self.avatarURL = group.photoUrl
         self.imagesService = imagesService
-        self.photo = item.attachments?.first(where: { $0.photo != nil })?.photo?.sizes.first(where: { $0.type == "x" })
 
+        let photoViewModels = self.makePhotoViewModels(from: item)
         self.viewModel = NewsCell.ViewModel(
             headerViewModel: self.makeHeaderViewModel(from: item, group: group),
             barViewModel: self.makeBarViewModel(from: item),
             textViewModel: self.makeTextViewModel(from: item),
-            singlePhotoViewModel: {
-                if let photo = self.photo {
-                    return NewsSinglePhotoViewModel(photo: photo, imagesService: self.imagesService)
-                } else {
-                    return nil
-                }
-            }()
+            singlePhotoViewModel: photoViewModels.count == 1 ? photoViewModels[0] : nil,
+            multiplePhotoViewModel: photoViewModels.count > 1 ? photoViewModels : nil
         )
     }
 
@@ -172,6 +161,28 @@ final class NewsCellController: CellController {
             onCommentsTapped: nil,
             onSharesTapped: nil
         )
+    }
+
+    private func makePhotoViewModels(from item: NewsItem) -> [NewsSinglePhotoViewModel] {
+        guard let photos = item.attachments?.filter({ $0.photo != nil }).compactMap({ $0.photo }) else { return [] }
+        if photos.count == 1 {
+            if let photoSize = photos.first?.sizes.first(where: { $0.type == "x" }) {
+                return [NewsSinglePhotoViewModel(photo: photoSize, imagesService: self.imagesService)]
+            } else {
+                return []
+            }
+        } else {
+            var viewModels: [NewsSinglePhotoViewModel] = []
+            photos.forEach { (photo) in
+                if let photoSize = photo.sizes.first(where: { $0.type == "q" }) {
+                    viewModels.append(NewsSinglePhotoViewModel(
+                        photo: photoSize,
+                        imagesService: self.imagesService)
+                    )
+                }
+            }
+            return viewModels
+        }
     }
 
     private static let dateFormatter: DateFormatter = {

@@ -21,6 +21,8 @@ class NewsCell: UITableViewCell {
         return photoView
     }()
 
+    private let multiplePhotoView = NewsMultiplePhotoView()
+
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "CardWithShadow")
@@ -36,6 +38,7 @@ class NewsCell: UITableViewCell {
         self.contentView.addSubview(self.headerView)
         self.contentView.addSubview(self.textView)
         self.contentView.addSubview(self.photoView)
+        self.contentView.addSubview(self.multiplePhotoView)
         self.contentView.addSubview(self.barView)
     }
 
@@ -55,15 +58,18 @@ class NewsCell: UITableViewCell {
         let barViewModel: NewsBarView.ViewModel
         var textViewModel: NewsTextView.ViewModel
         let singlePhotoViewModel: NewsSinglePhotoViewModel?
+        let multiplePhotoViewModel: [NewsSinglePhotoViewModel]?
 
         init(headerViewModel: NewsHeaderView.ViewModel,
              barViewModel: NewsBarView.ViewModel,
              textViewModel: NewsTextView.ViewModel,
-             singlePhotoViewModel: NewsSinglePhotoViewModel?) {
+             singlePhotoViewModel: NewsSinglePhotoViewModel?,
+             multiplePhotoViewModel: [NewsSinglePhotoViewModel]?) {
             self.headerViewModel = headerViewModel
             self.barViewModel = barViewModel
             self.textViewModel = textViewModel
             self.singlePhotoViewModel = singlePhotoViewModel
+            self.multiplePhotoViewModel = multiplePhotoViewModel
         }
     }
 
@@ -74,11 +80,13 @@ class NewsCell: UITableViewCell {
                 self.barView.viewModel = viewModel.barViewModel
                 self.textView.viewModel = viewModel.textViewModel
                 self.photoView.viewModel = viewModel.singlePhotoViewModel
+                self.multiplePhotoView.viewModels = viewModel.multiplePhotoViewModel
             } else {
                 self.headerView.viewModel = nil
                 self.barView.viewModel = nil
                 self.textView.viewModel = nil
                 self.photoView.viewModel = nil
+                self.multiplePhotoView.viewModels = nil
             }
         }
     }
@@ -90,6 +98,7 @@ class NewsCell: UITableViewCell {
             self.headerView.layout = self.layout.headerViewLayout
             self.barView.layout = self.layout.barViewLayout
             self.textView.layout = self.layout.textViewLayout
+            self.multiplePhotoView.layout = self.layout.multiplePhotoLayout
             self.setNeedsLayout()
         }
     }
@@ -101,5 +110,8 @@ class NewsCell: UITableViewCell {
         self.textView.frame = self.layout.textViewFrame
         self.barView.frame = self.layout.barViewFrame
         self.photoView.frame = self.layout.imageViewFrame
+        self.photoView.isHidden = self.layout.imageViewFrame.height == 0
+        self.multiplePhotoView.frame = self.layout.multiplePhotoViewFrame
+        self.multiplePhotoView.isHidden = self.layout.multiplePhotoViewFrame.height == 0
     }
 }
