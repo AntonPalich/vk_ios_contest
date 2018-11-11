@@ -193,6 +193,25 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		55B47D40219857F6005A42D5 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				55B9E3F42195887F009E89EF /* NewsFeedContainerViewController.swift */,
+				55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */,
+				55B47D2721972E03005A42D5 /* NewsFeedViewModel.swift */,
+				55B9E40121959CC4009E89EF /* NewsBarView.swift */,
+				55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */,
+				55B9E3FC219596BE009E89EF /* NewsCell.swift */,
+				55B9E4182195C9B2009E89EF /* NewsCellLayout.swift */,
+				55B9E4162195C29A009E89EF /* NewsCellController.swift */,
+				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
+				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
+				55B47D02219641EC005A42D5 /* NewsTextView.swift */,
+				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
 		55B9E3AF2194DCA9009E89EF = {
 			isa = PBXGroup;
 			children = (
@@ -219,23 +238,12 @@
 				55B47CFE21961F23005A42D5 /* Helpers */,
 				55B47D3921984803005A42D5 /* Images */,
 				55B47D1321970B5D005A42D5 /* Network */,
+				55B47D40219857F6005A42D5 /* NewsFeed */,
 				55B47D1E2197215A005A42D5 /* Models */,
 				55B9E40321959DF5009E89EF /* Resources */,
 				55B47D0C2196EB9C005A42D5 /* Routing */,
 				55B9E40021959757009E89EF /* Styles */,
 				55B9E3BB2194DCA9009E89EF /* AppDelegate.swift */,
-				55B9E3F42195887F009E89EF /* NewsFeedContainerViewController.swift */,
-				55B9E3BD2194DCA9009E89EF /* NewsFeedViewController.swift */,
-				55B47D2721972E03005A42D5 /* NewsFeedViewModel.swift */,
-				55B9E40121959CC4009E89EF /* NewsBarView.swift */,
-				55B9E4062195A385009E89EF /* NewsBarViewLayout.swift */,
-				55B9E3FC219596BE009E89EF /* NewsCell.swift */,
-				55B9E4182195C9B2009E89EF /* NewsCellLayout.swift */,
-				55B9E4162195C29A009E89EF /* NewsCellController.swift */,
-				55B9E4082195AB46009E89EF /* NewsHeaderView.swift */,
-				55B9E40A2195AFC2009E89EF /* NewsHeaderViewLayout.swift */,
-				55B47D02219641EC005A42D5 /* NewsTextView.swift */,
-				55961EC72195CE0A00784F09 /* NewsTextViewLayout.swift */,
 				55B9E3C22194DCAB009E89EF /* Assets.xcassets */,
 				55B9E3C42194DCAB009E89EF /* LaunchScreen.storyboard */,
 				55B9E3C72194DCAB009E89EF /* Info.plist */,
