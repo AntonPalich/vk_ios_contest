@@ -46,6 +46,7 @@ class NewsFeedViewController: UITableViewController {
 
         NewsCellController.register(in: self.tableView)
         LoadingIndicatorCellController.register(in: self.tableView)
+        FooterCellController.register(in: self.tableView)
 
         self.viewModel.onViewDidLoad()
     }
@@ -86,7 +87,8 @@ class NewsFeedViewController: UITableViewController {
         let groups = self.viewModel.groups
         let layoutSize = CGSize(width: self.tableView.bounds.width, height: .greatestFiniteMagnitude)
 
-        // FIXME: Сделать очередь обновлений. Создавать контроллеры в фоне. Не пересоздавать существующие контроллеры
+        // FIXME: Сделать очередь обновлений.
+        // FIXME: Переиспользовать контроллеры
         DispatchQueue.global(qos: .userInitiated).async {
             var controllers: [CellController] = items.map { (item) in
                 let controller: NewsCellController = {
@@ -108,6 +110,7 @@ class NewsFeedViewController: UITableViewController {
                 controller.prepareLayout(fittingSize: layoutSize)
                 return controller
             }
+            controllers.append(FooterCellController(itemCount: items.count))
             controllers.append(LoadingIndicatorCellController(onDisplayed: {
                 self.viewModel.loadNextPage()
             }))

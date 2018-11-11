@@ -18,7 +18,7 @@ class LoadingIndicatorCellController: CellController {
 
     // MARK: CellController
 
-    static let reuseIdentifier = "LoadingIndicatorCell"
+    private static let reuseIdentifier = "LoadingIndicatorCell"
     
     static func register(in tableView: UITableView) {
         tableView.register(LoadingIndicatorCell.self, forCellReuseIdentifier: self.reuseIdentifier)
