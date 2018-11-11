@@ -65,8 +65,7 @@ class NewsTextView: UIView {
     private let textView: PerformantTextView = {
         let textView = PerformantTextView()
         textView.isEditable = false
-        textView.isSelectable = false // true?
-        textView.dataDetectorTypes = .all
+        textView.dataDetectorTypes = [.link, .phoneNumber]
         textView.scrollsToTop = false
         textView.isScrollEnabled = false
         textView.bounces = false
@@ -111,7 +110,7 @@ private final class PerformantTextView: UITextView {
             return NSRange(location: 0, length: 0)
         }
         set {
-            // Part of the heaviest stack trace when scrolling (when updating text)
+            // Не нужно, увеличиваем производительность
         }
     }
 
@@ -120,7 +119,19 @@ private final class PerformantTextView: UITextView {
             return .zero
         }
         set {
-            // Part of the heaviest stack trace when scrolling (when bounds are set)
+            // Не нужно, увеличиваем производительность
+        }
+    }
+
+    // Отключаем выделение текста, сохраняя возможность кликать на ссылки
+    override var gestureRecognizers: [UIGestureRecognizer]? {
+        set {
+            super.gestureRecognizers = newValue
+        }
+        get {
+            return super.gestureRecognizers?.filter({ (gestureRecognizer) -> Bool in
+                return type(of: gestureRecognizer) == UILongPressGestureRecognizer.self && gestureRecognizer.delaysTouchesEnded
+            })
         }
     }
 }

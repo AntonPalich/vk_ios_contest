@@ -31,7 +31,7 @@ final class AuthorizationService: NSObject {
         VKSdk.wakeUpSession([]) { (state, error) in
             switch state {
             case .initialized:
-                VKSdk.authorize([])
+                VKSdk.authorize(["wall", "friends"])
             case .authorized:
                 self.delegate?.authorizationService(self, didAuthorizeWithToken: VKSdk.accessToken())
             case .error, .unknown:

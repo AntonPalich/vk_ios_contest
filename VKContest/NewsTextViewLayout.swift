@@ -31,7 +31,8 @@ struct NewsTextViewLayout {
             return layoutManager
         }()
 
-        if layoutManager.numberOfLines() > 8 && viewModel.state == .short {
+        let shouldShowMoreLabel = layoutManager.numberOfLines() > 8 && viewModel.state == .short
+        if shouldShowMoreLabel {
             textContainer.maximumNumberOfLines = 6
             layoutManager.textContainerChangedGeometry(textContainer)
         }
@@ -47,7 +48,7 @@ struct NewsTextViewLayout {
             x: 0,
             y: self.textViewFrame.maxY,
             width: size.width,
-            height: viewModel.state == .short ? 17 : 0
+            height: shouldShowMoreLabel ? 17 : 0
         )
 
         self.size = CGSize(

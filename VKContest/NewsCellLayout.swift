@@ -23,7 +23,7 @@ struct NewsCellLayout {
     private let backgroundImageViewInsets = UIEdgeInsets(top: 0, left: -10, bottom: -10, right: -10)
     private let headerInsets = UIEdgeInsets(top: 12, left: 20, bottom: 0, right: 20)
     private let textInsets = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
-    private let barInsets = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 8)
+    private let barInsets = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 20)
 
     mutating func calculateLayoutFitting(_ size: CGSize, for viewModel: NewsCell.ViewModel) {
         let headerSize = size.inset(by: self.headerInsets)
@@ -59,15 +59,6 @@ struct NewsCellLayout {
             size: self.barViewLayout.size
         )
 
-        let backgroundImageViewSize = self.size.inset(by: self.backgroundImageViewInsets)
-        self.backgroundImageViewFrame = CGRect(
-            origin: CGPoint(
-                x: self.backgroundImageViewInsets.left,
-                y: self.backgroundImageViewInsets.top
-            ),
-            size: backgroundImageViewSize
-        )
-
         let height = (
             self.headerInsets.top
                 + self.headerViewLayout.size.height
@@ -77,5 +68,14 @@ struct NewsCellLayout {
                 + self.barInsets.bottom
         )
         self.size = CGSize(width: size.width, height: height)
+
+        let backgroundImageViewSize = self.size.inset(by: self.backgroundImageViewInsets)
+        self.backgroundImageViewFrame = CGRect(
+            origin: CGPoint(
+                x: self.backgroundImageViewInsets.left,
+                y: self.backgroundImageViewInsets.top
+            ),
+            size: backgroundImageViewSize
+        )
     }
 }

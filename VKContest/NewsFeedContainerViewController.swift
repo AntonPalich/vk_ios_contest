@@ -13,6 +13,17 @@ class NewsFeedContainerViewController: UIViewController {
     private var searchController: UISearchController?
     private var newsFeedViewController: NewsFeedViewController?
 
+    private let networkService: NetworkService
+
+    init(networkService: NetworkService) {
+        self.networkService = networkService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,11 +31,19 @@ class NewsFeedContainerViewController: UIViewController {
         self.view.backgroundColor = .white
         self.definesPresentationContext = true
 
-        self.searchController = UISearchController(searchResultsController: NewsFeedViewController())
+        self.searchController = UISearchController(
+            searchResultsController: NewsFeedViewController(
+                viewModel: NewsFeedViewModel(networkService: self.networkService)
+            )
+        )
         self.searchController?.searchBar.searchBarStyle = .minimal
         self.searchController?.dimsBackgroundDuringPresentation = false
 
-        let newsFeedViewController = NewsFeedViewController()
+        let newsFeedViewController = NewsFeedViewController(
+            viewModel: NewsFeedViewModel(
+                networkService: self.networkService
+            )
+        )
         self.vk_addSubview(from: newsFeedViewController)
         newsFeedViewController.view.frame = self.view.bounds
         newsFeedViewController.tableView.tableHeaderView = self.searchController?.searchBar

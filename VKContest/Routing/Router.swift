@@ -29,10 +29,11 @@ class Router {
                 router: self
             )
             self.present(viewController: viewController)
-        case .newsFeed:
-            let viewController = NewsFeedContainerViewController()
-            let navigationController = UINavigationController(rootViewController: viewController)
-            self.present(viewController: navigationController)
+        case .newsFeed(let token):
+            let viewController = NewsFeedContainerViewController(
+                networkService: NetworkService(token: token)
+            )
+            self.present(viewController: UINavigationController(rootViewController: viewController))
         }
     }
 

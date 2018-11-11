@@ -135,12 +135,15 @@ class NewsBarView: UIView {
     // MARK: Views
 
     private let viewsButton: UIButton = {
-        return UIButton.makeBarButton(
-            image: UIImage(named: "View_20"),
-            target: nil,
-            selector: nil,
-            color: .newsBarViewsButtonColor
-        )
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "View_20"), for: .normal)
+        button.titleLabel?.font = .newsBarButtonFont
+        button.setTitleColor(.newsBarViewsButtonColor, for: .normal)
+        button.tintColor = .newsBarViewsButtonColor
+        button.vk_set(imageFromTitleOffset: 4)
+        button.contentHorizontalAlignment = .right
+        return button
+
     }()
 
     private func set(views: String) {
