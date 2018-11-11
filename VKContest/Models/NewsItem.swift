@@ -13,6 +13,7 @@ struct NewsItem: Decodable {
     let type: String
     let date: TimeInterval
     let text: String
+    let attachments: [NewsAttachment]?
     let comments: NewsComments
     let likes: NewsLikes
     let reposts: NewsReposts
