@@ -185,6 +185,7 @@
 		55B47D1321970B5D005A42D5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				55B47D1E2197215A005A42D5 /* Models */,
 				55B47D1821970E6E005A42D5 /* NetworkRequest.swift */,
 				55B47D1421970C4C005A42D5 /* NetworkService.swift */,
 				55B47D1621970C5A005A42D5 /* GetNewsRequest.swift */,
@@ -336,7 +337,6 @@
 				55B47D3921984803005A42D5 /* Images */,
 				55B47D1321970B5D005A42D5 /* Network */,
 				55B47D40219857F6005A42D5 /* NewsFeed */,
-				55B47D1E2197215A005A42D5 /* Models */,
 				55B9E40321959DF5009E89EF /* Resources */,
 				55B47D0C2196EB9C005A42D5 /* Routing */,
 				55B9E40021959757009E89EF /* Styles */,
